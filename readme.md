@@ -13,7 +13,7 @@ with each move, you must press enter.
 
 # Health
 
-You have 10 `hp`.
+You have 10 `hp`.<br>
 You'll lose `hp` when you punch doors with bare hands.
 
 # Cloning
