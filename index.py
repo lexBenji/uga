@@ -6,29 +6,32 @@ py=y
 px=x
 
 l = [
-'11111111',
-'10000001',
-'10000001',
-'13300001',
-'11110111',
-'55510155',
-'11110111',
-'10000031',
-'11111111'
+'1111111111111',
+'1000000110001',
+'1000000110001',
+'1000000300001',
+'1000000110001',
+'1111011110001',
+'5551315510001',
+'1111011110001',
+'1000000000001',
+'1111111111111'
 ]
 m = [list(x) for x in l]
 items = ['sword','shield']
 citem = ''
+hp=100
 while True:
     print('\033c',end='')
     m[py][x] = m[py][x].replace('2','0')
     m[y][px] = m[y][px].replace('2','0')
     m[y][x] = '2'
-    print(y,x)
-    print(py,px)
-    print(m[y-1])
-    print(m[y])
-    print(m[y+1])
+    print('Health:',str(hp)+'/100')
+    if citem == '':
+        print('Current item: none')
+    else:
+        print('Current item:',citem)
+    print()
     for i in m:
         for j in i:
             if j == '0':
@@ -98,8 +101,9 @@ while True:
         print(f'Current item: {citem}')
         g = False
         while True:
+            print('Shop: ',end='')
             for i in items:
-                print(i,' ',end='')
+               print(i,' ',end='')
             print()
             item = input('Choose your item: ')
             if item in items:
