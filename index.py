@@ -11,32 +11,38 @@ l = [
 '1000000100001',
 '1000000300001',
 '1000000100001',
-'1111011100001',
-'5551315100001',
-'5551011100001',
+'1111311100001',
+'5551004100001',
+'5551000100001',
 '5551000000001',
 '5551111111111'
 ]
 m = [list(x) for x in l]
-items = ['sword','shield']
-citem = ''
-hp=100
+items = ['hands','sword','shield']
+citem = 'hands'
+hp=10
 k = 0
 char = ['@',
         '%',
         '&',
-        '$'
+        '$',
+        'P'
         ]
 while True:
+    if hp == 0:
+        print('\033c',end='')
+        print('+-----------+')
+        print('| You lose! |')
+        print('+-----------+')
+        break
+    else:
+        pass
     print('\033c',end='')
     m[py][x] = m[py][x].replace('2','0')
     m[y][px] = m[y][px].replace('2','0')
     m[y][x] = '2'
-    print('Health:',str(hp)+'/100')
-    if citem == '':
-        print('Current item: none')
-    else:
-        print('Current item:',citem)
+    print(f'Health: {hp}/10')
+    print('Current item:',citem)
     print()
     for i in m:
         for j in i:
@@ -48,6 +54,8 @@ while True:
                 print(char[k],end='')
             elif j == '3':
                 print('=',end='')
+            elif j == '4':
+                print('N',end='')
             elif j == '5':
                 print(' ',end='')
             else:
@@ -68,8 +76,12 @@ while True:
         if m[y-1][x] == '3' or m[y-1][x] == '1':
             if m[y-1][x] == '3' and citem == 'sword':
                 m[y-1][x] = m[y-1][x].replace('3','0')
+            elif m[y-1][x] == '3' and citem == 'hands':
+                hp = hp - 1
             else:
                 pass
+        elif m[y-1][x] == '4':
+            pass
         else:
             py = y
             y = y - 1
@@ -77,8 +89,12 @@ while True:
         if m[y+1][x] == '3' or m[y+1][x] == '1':
             if m[y+1][x] == '3' and citem == 'sword':
                 m[y+1][x] = m[y+1][x].replace('3','0')
+            elif m [y+1][x] == '3' and citem == 'hands':
+                hp = hp - 1
             else:
                 pass
+        elif m[y+1][x] == '4':
+            pass
         else:
             py = y
             y = y + 1
@@ -86,8 +102,12 @@ while True:
         if m[y][x+1] == '3' or m[y][x+1] == '1':
             if m[y][x+1] == '3' and citem == 'sword':
                 m[y][x+1] = m[y][x+1].replace('3','0')
+            elif m[y][x+1] == '3' and citem == 'hands':
+                hp = hp - 1
             else:
                 pass
+        elif m[y][x+1] == '4':
+            pass
         else:
             px = x
             x = x + 1
@@ -95,8 +115,12 @@ while True:
         if m[y][x-1] == '3' or m[y][x-1] == '1':
             if m[y][x-1] == '3' and citem == 'sword':
                 m[y][x-1] = m[y][x-1].replace('3','0')
+            elif m[y][x-1] == '3' and citem == 'hands':
+                hp = hp - 1
             else:
                 pass
+        elif m[y][x-1] == '4':
+            pass
         elif x-1 == 0:
             pass
         else:

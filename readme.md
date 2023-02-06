@@ -11,6 +11,11 @@ UGA is still in developement and you can help by contributing in this project.
 `x` to exit.<br>
 with each move, you must press enter.
 
+# Health
+
+You have 10 `hp`.
+You'll lose `hp` when you punch doors with bare hands.
+
 # Cloning
 
 Type
