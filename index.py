@@ -21,6 +21,12 @@ m = [list(x) for x in l]
 items = ['sword','shield']
 citem = ''
 hp=100
+k = 0
+char = ['@',
+        '%',
+        '&',
+        '$'
+        ]
 while True:
     print('\033c',end='')
     m[py][x] = m[py][x].replace('2','0')
@@ -39,7 +45,7 @@ while True:
             elif j == '1':
                 print('#',end='')
             elif j == '2':
-                print('@',end='')
+                print(char[k],end='')
             elif j == '3':
                 print('=',end='')
             elif j == '5':
@@ -117,3 +123,8 @@ while True:
         print(f'Item {item} chose.')
         citem = item
         delay(1)
+    elif move == 'c':
+        if k+1 == len(char):
+            k = 0
+        else:
+            k+=1
