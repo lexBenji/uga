@@ -7,9 +7,8 @@ UGA is still in developement and you can help by contributing in this project.
 
 `w`,`a`,`s`,`d` to move.<br>
 `i` to see items.<br>
-`p` to pause the game<br>
+`p` to pause the game.<br>
 `x` to exit.<br>
-with each move, you must press enter.
 
 # Health
 
