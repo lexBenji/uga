@@ -10,15 +10,15 @@ l = [
 '1000000100001',
 '1000000100001',
 '1000000300001',
-'1000000100001',
+'1450006100001',
 '1111311100001',
-'5551004100001',
-'5551000100001',
-'5551000000001',
-'5551111111111'
+'0001000100001',
+'0001000100001',
+'0001000000001',
+'0001111111111'
 ]
 m = [list(x) for x in l]
-items = ['hands','sword','shield']
+items = ['hands','axe','shield']
 citem = 'hands'
 hp=10
 k = 0
@@ -29,35 +29,35 @@ char = ['@',
         'P'
         ]
 while True:
+    print('\033c',end='')
     if hp == 0:
-        print('\033c',end='')
         print('+-----------+')
         print('| You lose! |')
         print('+-----------+')
         break
     else:
         pass
-    print('\033c',end='')
     m[py][x] = m[py][x].replace('2','0')
     m[y][px] = m[y][px].replace('2','0')
     m[y][x] = '2'
     print(f'Health: {hp}/10')
     print('Current item:',citem)
-    print()
+    if hp <= 5:
+        print('Don\'t punch doors!')
+    else:
+        print()
     for i in m:
         for j in i:
             if j == '0':
-                print('.',end='')
+                print(' ',end='')
             elif j == '1':
                 print('#',end='')
             elif j == '2':
                 print(char[k],end='')
             elif j == '3':
                 print('=',end='')
-            elif j == '4':
-                print('N',end='')
-            elif j == '5':
-                print(' ',end='')
+            elif j == '4' or j == '5' or j == '6':
+                print('T',end='')
             else:
                 print(j)
         print()
@@ -74,55 +74,93 @@ while True:
         exit()
     elif move == 'w':
         if m[y-1][x] == '3' or m[y-1][x] == '1':
-            if m[y-1][x] == '3' and citem == 'sword':
+            if m[y-1][x] == '3' and citem == 'axe':
                 m[y-1][x] = m[y-1][x].replace('3','0')
             elif m[y-1][x] == '3' and citem == 'hands':
                 hp = hp - 1
             else:
-                pass
+                continue
         elif m[y-1][x] == '4':
-            pass
+            print('\033c',end='')
+            print('Tip: Press I to open item menu')
+            delay(1)
+        elif m[y-1][x] == '5':
+            print('\033c',end='')
+            print('Tip: Attack doors (=) with an axe to destroy them')
+            delay(1)
+        elif m[y-1][x] == '6':
+            print('\033c',end='')
+            print('Tip: Good luck')
+            delay(1)
         else:
             py = y
             y = y - 1
     elif move == 's':
         if m[y+1][x] == '3' or m[y+1][x] == '1':
-            if m[y+1][x] == '3' and citem == 'sword':
+            if m[y+1][x] == '3' and citem == 'axe':
                 m[y+1][x] = m[y+1][x].replace('3','0')
             elif m [y+1][x] == '3' and citem == 'hands':
                 hp = hp - 1
             else:
-                pass
+                continue
         elif m[y+1][x] == '4':
-            pass
+            print('\033c',end='')
+            print('Tip: Press I to open item menu')
+            delay(1)
+        elif m[y+1][x] == '5':
+            print('\033c',end='')
+            print('Tip: Attack doors (=) with an axe to desteoy them')
+            delay(1)
+        elif m[y+1][x] == '6':
+            print('\033c',end='')
+            print('Tip: Good luck')
+            delay(1)
         else:
             py = y
             y = y + 1
     elif move == 'd':
         if m[y][x+1] == '3' or m[y][x+1] == '1':
-            if m[y][x+1] == '3' and citem == 'sword':
+            if m[y][x+1] == '3' and citem == 'axe':
                 m[y][x+1] = m[y][x+1].replace('3','0')
             elif m[y][x+1] == '3' and citem == 'hands':
                 hp = hp - 1
             else:
-                pass
+                continue
         elif m[y][x+1] == '4':
-            pass
+            print('\033c',end='')
+            print('Tip: Press I to open item menu')
+            delay(1)
+        elif m[y][x+1] == '5':
+            print('\033c',end='')
+            print('Tip: Attack doors (=) with an axe to destroy them')
+            delay(1)
+        elif m[y][x+1] == '6':
+            print('\033c',end='')
+            print('Tip: Good luck')
+            delay(1)
         else:
             px = x
             x = x + 1
     elif move == 'a':
         if m[y][x-1] == '3' or m[y][x-1] == '1':
-            if m[y][x-1] == '3' and citem == 'sword':
+            if m[y][x-1] == '3' and citem == 'axe':
                 m[y][x-1] = m[y][x-1].replace('3','0')
             elif m[y][x-1] == '3' and citem == 'hands':
                 hp = hp - 1
             else:
-                pass
+                continue
         elif m[y][x-1] == '4':
-            pass
-        elif x-1 == 0:
-            pass
+            print('\033c',end='')
+            print('Tip: Press I to open item menu')
+            delay(1)
+        elif m[y][x-1] == '5':
+            print('\033c',end='')
+            print('Tip: Attack doors (=) with an axe to destroy them')
+            delay(1)
+        elif m[y][x-1] == '6':
+            print('\033c',end='')
+            print('Tip: Good luck')
+            delay(1)
         else:
             px = x
             x = x - 1
@@ -144,7 +182,7 @@ while True:
             if g == True:
                 break
         print('\033c',end='')
-        print(f'Item {item} chose.')
+        print(f'Item {item} chosen.')
         citem = item
         delay(1)
     elif move == 'c':
