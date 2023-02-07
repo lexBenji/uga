@@ -1,3 +1,4 @@
+from getch import getch
 from time import sleep as delay
 
 x=1
@@ -12,15 +13,16 @@ l = [
 '1000000300001',
 '1450006100001',
 '1111311100001',
+'0001000111311',
 '0001000100001',
-'0001000100001',
-'0001000000001',
-'0001111111111'
+'0001000300001',
+'0001111171111'
 ]
 m = [list(x) for x in l]
 items = ['hands','axe','shield']
 citem = 'hands'
-hp=10
+mhp=10
+hp=mhp
 k = 0
 char = ['@',
         '%',
@@ -40,7 +42,7 @@ while True:
     m[py][x] = m[py][x].replace('2','0')
     m[y][px] = m[y][px].replace('2','0')
     m[y][x] = '2'
-    print(f'Health: {hp}/10')
+    print(f'Health: {hp}/{mhp}')
     print('Current item:',citem)
     if hp <= 5:
         print('Don\'t punch doors!')
@@ -54,20 +56,17 @@ while True:
                 print('#',end='')
             elif j == '2':
                 print(char[k],end='')
-            elif j == '3':
+            elif j == '3' or j == '7':
                 print('=',end='')
             elif j == '4' or j == '5' or j == '6':
                 print('T',end='')
             else:
                 print(j)
         print()
-    move = input('').lower()
+    move = getch().lower()
     if move == 'p':
         print('\033c',end='')
-        print('      +-------------------------+')
-        print('+-----| Press ENTER to continue |-----+')
-        print('|     +-------------------------+     |')
-        print('+---------+                +----------+')
+        print('Press ENTER to continue')
         input()
     elif move == 'x':
         print('\033c',end='')
@@ -92,6 +91,10 @@ while True:
             print('\033c',end='')
             print('Tip: Good luck')
             delay(1)
+        elif m[y-1][x] == '7':
+            print('\033c',end='')
+            print('You finished the game')
+            break
         else:
             py = y
             y = y - 1
@@ -109,12 +112,16 @@ while True:
             delay(1)
         elif m[y+1][x] == '5':
             print('\033c',end='')
-            print('Tip: Attack doors (=) with an axe to desteoy them')
+            print('Tip: Attack doors (=) with an axe to destroy them')
             delay(1)
         elif m[y+1][x] == '6':
             print('\033c',end='')
             print('Tip: Good luck')
             delay(1)
+        elif m[y+1][x] == '7':
+            print('\033c',end='')
+            print('You finished the game')
+            break
         else:
             py = y
             y = y + 1
@@ -138,6 +145,10 @@ while True:
             print('\033c',end='')
             print('Tip: Good luck')
             delay(1)
+        elif m[y][x+1] == '7':
+            print('\033c',end='')
+            print('You finished the game')
+            break
         else:
             px = x
             x = x + 1
@@ -161,6 +172,10 @@ while True:
             print('\033c',end='')
             print('Tip: Good luck')
             delay(1)
+        elif m[y][x-1] == '7':
+            print('\033c',end='')
+            print('You finished the game')
+            break
         else:
             px = x
             x = x - 1
