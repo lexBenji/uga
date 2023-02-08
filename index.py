@@ -23,19 +23,10 @@ items = ['hands','axe','shield']
 citem = 'hands'
 mhp=10
 hp=mhp
-k = 0
-char = ['@',
-        '%',
-        '&',
-        '$',
-        'P'
-        ]
 while True:
     print('\033c',end='')
     if hp == 0:
-        print('+-----------+')
-        print('| You lose! |')
-        print('+-----------+')
+        print('You lose!')
         break
     else:
         pass
@@ -45,7 +36,7 @@ while True:
     print(f'Health: {hp}/{mhp}')
     print('Current item:',citem)
     if hp <= 5:
-        print('Don\'t punch doors!')
+        print('You\'re low on health!')
     else:
         print()
     for i in m:
@@ -55,7 +46,7 @@ while True:
             elif j == '1':
                 print('#',end='')
             elif j == '2':
-                print(char[k],end='')
+                print('@',end='')
             elif j == '3' or j == '7':
                 print('=',end='')
             elif j == '4' or j == '5' or j == '6':
@@ -183,6 +174,7 @@ while True:
         print('\033c',end='')
         print(f'Current item: {citem}')
         g = False
+        a = True
         while True:
             print('Shop: ',end='')
             for i in items:
@@ -194,14 +186,17 @@ while True:
                     if j == item:
                         g = True
                         break
+                if item not in items:
+                    g = True
+                    a = False
+                    print(f'Item {item} not found')
+                    break
             if g == True:
                 break
         print('\033c',end='')
-        print(f'Item {item} chosen.')
-        citem = item
-        delay(1)
-    elif move == 'c':
-        if k+1 == len(char):
-            k = 0
+        if a == False:
+            pass
         else:
-            k+=1
+            print(f'Item {item} chosen.')
+            citem = item
+        delay(1)
