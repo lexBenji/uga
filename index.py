@@ -8,7 +8,7 @@ px=x
 
 l = [
 '1111111111111',
-'1000000100001',
+'1000008100001',
 '1000000100001',
 '1000000300001',
 '1450006100001',
@@ -49,7 +49,7 @@ while True:
                 print('@',end='')
             elif j == '3' or j == '7':
                 print('=',end='')
-            elif j == '4' or j == '5' or j == '6':
+            elif j == '4' or j == '5' or j == '6' or j == '8':
                 print('T',end='')
             else:
                 print(j)
@@ -86,6 +86,8 @@ while True:
             print('\033c',end='')
             print('You finished the game')
             break
+        elif m[y-1][x] == '8':
+            hp = 10
         else:
             py = y
             y = y - 1
@@ -113,6 +115,8 @@ while True:
             print('\033c',end='')
             print('You finished the game')
             break
+        elif m[y+1][x] == '8':
+            hp = 10
         else:
             py = y
             y = y + 1
@@ -140,6 +144,8 @@ while True:
             print('\033c',end='')
             print('You finished the game')
             break
+        elif m[y][x+1] == '8':
+            hp = 10
         else:
             px = x
             x = x + 1
@@ -167,6 +173,8 @@ while True:
             print('\033c',end='')
             print('You finished the game')
             break
+        elif m[y][x-1] == '8':
+            hp = 10
         else:
             px = x
             x = x - 1
